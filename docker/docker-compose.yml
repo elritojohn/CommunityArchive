@@ -1,0 +1,56 @@
+services:
+
+  postgres:
+    image: postgis/postgis:16-3.4
+    container_name: cda_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: community_archive
+      POSTGRES_USER: archive
+      POSTGRES_PASSWORD: archive123
+    volumes:
+      - ../database/postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  nocodb:
+    image: nocodb/nocodb:latest
+    container_name: cda_nocodb
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
+    environment:
+      NC_DB: "pg://postgres:5432?u=archive&p=archive123&d=community_archive"
+    depends_on:
+      - postgres
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: cda_pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@communityarchive.local
+      PGADMIN_DEFAULT_PASSWORD: archive123
+    ports:
+      - "8082:80"
+    depends_on:
+      - postgres
+
+  filebrowser:
+    image: filebrowser/filebrowser
+    container_name: cda_filebrowser
+    restart: unless-stopped
+    volumes:
+      - ../data:/srv
+      - ../database/filebrowser:/database
+    ports:
+      - "8083:80"
+
+  nginx:
+    image: nginx:latest
+    container_name: cda_web
+    restart: unless-stopped
+    volumes:
+      - ../website:/usr/share/nginx/html:ro
+    ports:
+      - "8080:80"

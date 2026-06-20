@@ -1,0 +1,7 @@
+database/postgres/
+database/filebrowser/
+database/backups/
+logs/
+data/
+*.log
+website_backup_*
