@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<title>Community Archive Migration Assistant</title>
+
+<link rel="stylesheet" href="migration.css">
+
+</head>
+
+<body>
+
+<h1>Community Archive Migration Assistant</h1>
+
+<div id="wizard">
+
+<div class="step">
+
+<h2>Step 1 - Select Source Folder</h2>
+
+<input type="file" id="folderPicker" webkitdirectory directory multiple>
+
+<p>
+
+Select the folder you wish to migrate.
+
+</p>
+
+</div>
+
+<hr>
+
+<div class="step">
+
+<h2>Step 2 - Collection</h2>
+
+<label>Collection Name</label>
+
+<br>
+
+<input id="collectionName" style="width:400px">
+
+</div>
+
+<hr>
+
+<div class="step">
+
+<h2>Step 3 - Curator</h2>
+
+<label>Curator</label>
+
+<br>
+
+<input id="curator" style="width:400px">
+
+</div>
+
+<hr>
+
+<div class="step">
+
+<h2>Step 4 - Default Privacy</h2>
+
+<select id="privacy">
+
+<option>Public</option>
+
+<option>Community</option>
+
+<option>Family</option>
+
+<option>Restricted</option>
+
+<option>Private</option>
+
+</select>
+
+</div>
+
+<hr>
+
+<div class="step">
+
+<h2>Step 5 - AI Permission</h2>
+
+<select id="ai">
+
+<option>Allowed</option>
+
+<option>Metadata Only</option>
+
+<option>Forbidden</option>
+
+</select>
+
+</div>
+
+<hr>
+
+<div class="step">
+
+<h2>Step 6 - Stewardship</h2>
+
+<select id="stewardship">
+
+<option>Personal</option>
+
+<option>Family</option>
+
+<option>Organization</option>
+
+<option>Community Archive</option>
+
+</select>
+
+</div>
+
+<hr>
+
+<div class="step">
+
+<h2>Step 7 - Suggested Topics</h2>
+
+<select id="topic">
+
+<option>Photographs</option>
+
+<option>Theatre</option>
+
+<option>Education</option>
+
+<option>Correspondence</option>
+
+<option>Performances</option>
+
+<option>Awards</option>
+
+<option>Immigration</option>
+
+<option>Personal Papers</option>
+
+<option>Audio</option>
+
+<option>Video</option>
+
+<option>Create New Topic...</option>
+
+</select>
+
+</div>
+
+<hr>
+
+<div class="step">
+
+<h2>Step 8 - Files</h2>
+
+<table id="fileTable">
+
+<thead>
+
+<tr>
+
+<th>Keep</th>
+
+<th>Name</th>
+
+<th>Topic</th>
+
+<th>Privacy</th>
+
+<th>AI</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+</tbody>
+
+</table>
+
+</div>
+
+<hr>
+
+<div class="step">
+
+<button onclick="buildTable()">
+
+Load Folder
+
+</button>
+
+<button onclick="exportMetadata()">
+
+Export Metadata
+
+</button>
+
+</div>
+
+</div>
+
+<script src="migration.js"></script>
+
+</body>
+
+</html>

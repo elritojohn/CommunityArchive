@@ -5,3 +5,5 @@ logs/
 data/
 *.log
 website_backup_*
+venv/
+desktop/
